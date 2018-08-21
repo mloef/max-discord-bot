@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json");
 
 var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "Technically correct. The only kind of correct that matters.",
