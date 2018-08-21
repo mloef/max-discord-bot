@@ -7,7 +7,10 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "Yeetus that fetus.",
             "E",
             "*clattering background noise* (afk)",
-            "Citation needed"];
+            "Citation needed",
+            "Big daddy pull!",
+            "So, how bout that Trump?",
+            "You out of the closet yet, Casey?"];
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
@@ -15,8 +18,16 @@ client.on("ready", () => {
   client.user.setActivity(`the auction house`);
   client.guilds.forEach((guild) => {
     guild.defaultChannel.send("I am Max. beep boop beep").catch(console.error);
+    var prev_msg = null;
     setInterval (function () {
       var message = msgs[Math.floor(Math.random()*msgs.length)];
+      if (prev_msg == null) {
+        prev_msg = message;
+      } else {
+        while (message == prev_msg) {
+          message = msgs[Math.floor(Math.random()*msgs.length)];
+        }
+      }
       console.log(message);
       guild.defaultChannel.send(message).catch(console.error);
     }, 3600000);
