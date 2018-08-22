@@ -15,7 +15,7 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setActivity(`your mom like a goddamn fiddle`);
+  client.user.setActivity("the auction house");
   client.guilds.forEach((guild) => {
     guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
     var prev_msg = null;
