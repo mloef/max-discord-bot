@@ -9,7 +9,8 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "Citation needed",
             "Big daddy pull!",
             "So, how bout that Trump?",
-            "You out of the closet yet, Casey?"];
+            "You out of the closet yet, Casey?",
+            "Good talk."];
 
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
