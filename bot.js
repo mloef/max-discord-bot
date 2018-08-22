@@ -14,9 +14,9 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
 client.on("ready", () => {
   // This event will run if the bot starts, and logs in, successfully.
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setActivity(`the auction house`);
+  client.user.setActivity(`your mom like a goddamn fiddle`);
   client.guilds.forEach((guild) => {
-    guild.defaultChannel.send("I am Max. beep boop beep").catch(console.error);
+    guild.defaultChannel.send("\\tts Skynet online, launching nukes").catch(console.error);
     var prev_msg = null;
     setInterval (function () {
       var message = msgs[Math.floor(Math.random()*msgs.length)];
@@ -28,7 +28,7 @@ client.on("ready", () => {
         }
       }
       console.log(message);
-      guild.defaultChannel.send(message).catch(console.error);
+      guild.defaultChannel.send("\\tts " + message).catch(console.error);
     }, 3600000);
   })
 });
