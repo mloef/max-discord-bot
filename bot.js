@@ -16,7 +16,7 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
   client.user.setActivity(`your mom like a goddamn fiddle`);
   client.guilds.forEach((guild) => {
-    guild.defaultChannel.send("/tts Skynet online, launching nukes").catch(console.error);
+    guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
     var prev_msg = null;
     setInterval (function () {
       var message = msgs[Math.floor(Math.random()*msgs.length)];
@@ -28,7 +28,7 @@ client.on("ready", () => {
         }
       }
       console.log(message);
-      guild.defaultChannel.send("/tts " + message).catch(console.error);
+      guild.defaultChannel.send(message, {tts: true}).catch(console.error);
     }, 3600000);
   })
 });
