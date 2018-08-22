@@ -30,7 +30,7 @@ client.on("ready", () => {
       }
       console.log(message);
       guild.defaultChannel.send(message, {tts: true}).catch(console.error);
-    }, 3600000);
+    }, 180 * 60000); // time in milliseconds
   })
 });
 
