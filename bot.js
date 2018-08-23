@@ -23,6 +23,7 @@ function send_maxbot_msg (prev_msg, guild) {
       }
       console.log(message);
       guild.defaultChannel.send(message, {tts: true}).catch(console.error);
+  return message;
 }
 
 client.on("ready", () => {
@@ -49,7 +50,7 @@ client.on("ready", () => {
       
       if (!curr_msg.author.bot) {
         if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600)) {
-          send_maxbot_msg (prev_msg, guild);
+          prev_msg = send_maxbot_msg (prev_msg, guild);
           conv_flag = true;
           --msg_count;
           if (msg_count <= 0) {
