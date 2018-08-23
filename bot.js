@@ -47,7 +47,7 @@ client.on("ready", () => {
         conv_flag = false;
       }
       
-      if (!message.author.bot) {
+      if (!curr_msg.author.bot) {
         if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600)) {
           send_maxbot_msg (prev_msg, guild);
           conv_flag = true;
