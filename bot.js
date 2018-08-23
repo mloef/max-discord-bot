@@ -54,6 +54,7 @@ client.on("ready", () => {
         last_seen_msg.createdTimestamp = 0;
         msg_count = 5; //to be changed to dynamic msg count
         conv_flag = false;
+        curr_msg.bot = true;
       }
       
       if (!curr_msg.author.bot) {
