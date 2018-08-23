@@ -52,7 +52,7 @@ client.on("ready", () => {
           send_maxbot_msg (prev_msg, guild);
           conv_flag = true;
           --msg_count;
-          if (msg_count == 0) {
+          if (msg_count <= 0) {
             conv_flag = false;
             msg_count = 5; //to be changed to dynamic msg count
           }
