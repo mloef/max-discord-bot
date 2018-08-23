@@ -39,7 +39,7 @@ client.on("ready", () => {
     
     guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
     client.on ("message", curr_msg => {
-      if (message.content == "!maxbot-reset") {
+      if (curr_msg.content == "!maxbot-reset") {
         prev_msg = null;
         last_seen_msg = new Object();
         last_seen_msg.createdTimestamp = 0;
