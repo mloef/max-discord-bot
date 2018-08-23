@@ -33,7 +33,7 @@ client.on("ready", () => {
   client.guilds.forEach((guild) => {
     var prev_msg = null;
     var last_seen_msg = new Object();
-    var last_seen_msg.createdTimestamp = 0;
+    last_seen_msg.createdTimestamp = 0;
     var msg_count = 5; //to be changed to dynamic msg count
     var conv_flag = false;
     
