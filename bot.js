@@ -40,6 +40,14 @@ client.on("ready", () => {
     
     guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
     client.on ("message", curr_msg => {
+      if (curr_msg.content == "!maxbot-disable") {
+        prev_msg = null;
+        last_seen_msg = new Object();
+        last_seen_msg.createdTimestamp = 2535066508;
+        msg_count = -1; //to be changed to dynamic msg count
+        conv_flag = false;
+      }
+      
       if (curr_msg.content == "!maxbot-reset") {
         prev_msg = null;
         last_seen_msg = new Object();
@@ -52,8 +60,8 @@ client.on("ready", () => {
         if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600)) {
           prev_msg = send_maxbot_msg (prev_msg, guild);
           conv_flag = true;
-          --msg_count;
-          if (msg_count <= 0) {
+          msg_count = msg_count - 1;
+          if (msg_count == 0) {
             conv_flag = false;
             msg_count = 5; //to be changed to dynamic msg count
           }
