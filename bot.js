@@ -12,15 +12,8 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "You out of the closet yet, Casey?",
             "Good talk."];
 
-client.on("ready", () => {
-  // This event will run if the bot starts, and logs in, successfully.
-  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setActivity("the auction house");
-  client.guilds.forEach((guild) => {
-    guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
-    var prev_msg = null;
-    setInterval (function () {
-      var message = msgs[Math.floor(Math.random()*msgs.length)];
+function send_maxbot_msg (prev_msg, guild) {
+  var message = msgs[Math.floor(Math.random()*msgs.length)];
       if (prev_msg == null) {
         prev_msg = message;
       } else {
@@ -30,7 +23,35 @@ client.on("ready", () => {
       }
       console.log(message);
       guild.defaultChannel.send(message, {tts: true}).catch(console.error);
-    }, 180 * 60000); // time in milliseconds
+}
+
+client.on("ready", () => {
+  // This event will run if the bot starts, and logs in, successfully.
+  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
+  client.user.setActivity("the auction house");
+  
+  client.guilds.forEach((guild) => {
+    var prev_msg = null;
+    var last_seen_msg = new Object();
+    var last_seen_msg.createdTimestamp = 0;
+    var msg_count = 5; //to be changed to dynamic msg count
+    var conv_flag = false;
+    
+    guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
+    client.on ("message", curr_msg => {
+      if (!message.author.bot) {
+        if (conv_flag || curr_msg.createdTimestamp - last_seen_msg.createdTimestamp) > 3600) {
+          send_maxbot_msg (prev_msg, guild);
+          conv_flag = true;
+          --msg_count;
+          if (msg_count == 0) {
+            conv_flag = false;
+            msg_count = 5; //to be changed to dynamic msg count
+          }
+        }
+        last_seen_msg = curr_msg;
+      }
+    });
   })
 });
 
