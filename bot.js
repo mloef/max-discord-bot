@@ -12,7 +12,7 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "You out of the closet yet, Casey?",
             "Good talk."];
 
-function send_maxbot_msg (prev_msg, guild) {
+function send_maxbot_msg (prev_msg, channel) {
   var message = msgs[Math.floor(Math.random()*msgs.length)];
       if (prev_msg == null) {
         prev_msg = message;
@@ -22,7 +22,7 @@ function send_maxbot_msg (prev_msg, guild) {
         }
       }
       console.log(message);
-      guild.defaultChannel.send(message, {tts: true}).catch(console.error);
+      channel.send(message, {tts: true}).catch(console.error);
   return message;
 }
 
@@ -46,6 +46,7 @@ client.on("ready", () => {
         last_seen_msg.createdTimestamp = 2535066508;
         msg_count = -1; //to be changed to dynamic msg count
         conv_flag = false;
+        console.log("Disable command received and processed")
       }
       
       if (curr_msg.content == "!maxbot-reset") {
@@ -55,16 +56,18 @@ client.on("ready", () => {
         msg_count = 5; //to be changed to dynamic msg count
         conv_flag = false;
         curr_msg.bot = true;
+        console.log("Reset command received and processed")
       }
       
       if (!curr_msg.author.bot) {
         if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600)) {
-          prev_msg = send_maxbot_msg (prev_msg, guild);
+          prev_msg = send_maxbot_msg (prev_msg, curr_msg.channel);
           conv_flag = true;
           msg_count = msg_count - 1;
           if (msg_count == 0) {
             conv_flag = false;
             msg_count = 5; //to be changed to dynamic msg count
+            console.log("Exiting conversation mode")
           }
         }
         
