@@ -60,7 +60,7 @@ client.on("ready", () => {
       }
       
       if (!curr_msg.author.bot) {
-        if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600)) {
+        if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600000)) {
           console.log("New timestamp: " + curr_msg.createdTimestamp)
           console.log("Old timestamp: " + last_seen_msg.createdTimestamp)
           prev_msg = send_maxbot_msg (prev_msg, curr_msg.channel);
