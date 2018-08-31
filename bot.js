@@ -4,13 +4,16 @@ const client = new Discord.Client();
 var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "Technically correct. The only kind of correct that matters.",
             "Yeetus that fetus.",
-            "E",
+            "reeeeeeeeeeeeeeeeeee",
             "*clattering background noise* (afk)",
             "Citation needed",
             "Big daddy pull!",
             "So, how bout that Trump?",
             "You out of the closet yet, Casey?",
-            "Good talk."];
+            "Good talk.",
+            "Ya like jazz?",
+            "Whew lad",
+            "oh boiii"];
 
 function send_maxbot_msg (prev_msg, channel) {
   var message = msgs[Math.floor(Math.random()*msgs.length)];
@@ -38,7 +41,7 @@ client.on("ready", () => {
     var msg_count = 5; //to be changed to dynamic msg count
     var conv_flag = false;
     
-    guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
+    //guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
     client.on ("message", curr_msg => {
       if (curr_msg.content == "!maxbot-disable") {
         prev_msg = null;
