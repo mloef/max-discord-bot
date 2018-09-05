@@ -71,7 +71,7 @@ client.on("ready", () => {
           msg_count = msg_count - 1;
           if (msg_count == 0) {
             conv_flag = false;
-            msg_count = 5; //to be changed to dynamic msg count
+            msg_count = 3; //to be changed to dynamic msg count
             console.log("Exiting conversation mode")
           }
         }
