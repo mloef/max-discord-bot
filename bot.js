@@ -38,7 +38,7 @@ client.on("ready", () => {
     var prev_msg = null;
     var last_seen_msg = new Object();
     last_seen_msg.createdTimestamp = 0;
-    var msg_count = 5; //to be changed to dynamic msg count
+    var msg_count = 3; //to be changed to dynamic msg count
     var conv_flag = false;
     
     //guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
@@ -56,7 +56,7 @@ client.on("ready", () => {
         prev_msg = null;
         last_seen_msg = new Object();
         last_seen_msg.createdTimestamp = 0;
-        msg_count = 5; //to be changed to dynamic msg count
+        msg_count = 3; //to be changed to dynamic msg count
         conv_flag = false;
         curr_msg.bot = true;
         console.log("Reset command received and processed")
