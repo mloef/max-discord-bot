@@ -13,7 +13,8 @@ var msgs = ["Maybe yes. Maybe no. Maybe go fuck yourself.",
             "Good talk.",
             "Ya like jazz?",
             "Whew lad",
-            "oh boiii"];
+            "oh boiii",
+            "This is bullshit! I did naaaaaaaaaaaaaaht."];
 
 function send_maxbot_msg (prev_msg, channel) {
   var message = msgs[Math.floor(Math.random()*msgs.length)];
@@ -39,6 +40,7 @@ client.on("ready", () => {
     var last_seen_msg = new Object();
     last_seen_msg.createdTimestamp = 0;
     var msg_count = 3; //to be changed to dynamic msg count
+    var msg_prob = 0.5;
     var conv_flag = false;
     
     //guild.defaultChannel.send("Skynet online, launching nukes", {tts: true}).catch(console.error);
@@ -63,7 +65,7 @@ client.on("ready", () => {
       }
       
       if (!curr_msg.author.bot) {
-        if (conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600000)) {
+        if ((conv_flag || (curr_msg.createdTimestamp - last_seen_msg.createdTimestamp > 3600000)) && (Math.random() < msg_prob)) {
           //console.log("New timestamp: " + curr_msg.createdTimestamp)
           //console.log("Old timestamp: " + last_seen_msg.createdTimestamp)
           prev_msg = send_maxbot_msg (prev_msg, curr_msg.channel);
