@@ -20,8 +20,9 @@ client.on("ready", () => {
           }
         }
         var message = "Team 1: ";
-        for name in team1:
+        for (name in team1) {
             message = message + name + ", ";
+        }
         message += "\nTeam 2: ";
         for (name in team2) {
             message = message + name + ", ";
