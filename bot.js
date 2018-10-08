@@ -12,10 +12,12 @@ client.on("ready", () => {
         var team1 = []
         var team2 = []
         for (user in guild.members.values()) {
-          if Math.random()*2 > 1:
+          if (Math.random()*2 > 1) {
             team2.append(user.displayName);
-          else:
+          }
+          else {
             team1.append(user.displayName);
+          }
         }
         var message = "Team 1: ";
         for name in team1:
