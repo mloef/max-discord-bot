@@ -11,7 +11,7 @@ client.on("ready", () => {
       if (curr_msg.content == "bot-assign-teams") {
         var team1 = []
         var team2 = []
-        for (user in guild.members.values()) {
+        for (var user in guild.members.values()) {
           if (Math.random()*2 > 1) {
             team2.append(user.displayName);
           }
@@ -20,11 +20,11 @@ client.on("ready", () => {
           }
         }
         var message = "Team 1: ";
-        for (name in team1) {
+        for (var name in team1) {
             message = message + name + ", ";
         }
         message += "\nTeam 2: ";
-        for (name in team2) {
+        for (var name in team2) {
             message = message + name + ", ";
         }
         curr_msg.channel.send(message, {tts: true}).catch(console.error);
