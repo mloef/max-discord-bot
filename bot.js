@@ -13,6 +13,7 @@ client.on("ready", () => {
         var team2 = []
         console.log
         for (var user in guild.members.values()) {
+          console.log(user.displayName)
           if (Math.random()*2 > 1) {
             team2.append(user.displayName);
           }
