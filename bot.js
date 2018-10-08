@@ -11,12 +11,23 @@ client.on("ready", () => {
       if (curr_msg.content == "bot-assign-teams") {
         var team1 = []
         var team2 = []
+        console.log
         for (var user in guild.members.values()) {
           if (Math.random()*2 > 1) {
             team2.append(user.displayName);
           }
           else {
             team1.append(user.displayName);
+          }
+        }
+        while (Math.abs(team1.length - team2.length) > 1) {
+          if (team1.length > team2.length) {
+            var element = team1.pop()
+            team2.push(element)
+          }
+          else {
+            var element = team2.pop()
+            team1.push(element)
           }
         }
         var message = "Team 1: ";
@@ -27,6 +38,8 @@ client.on("ready", () => {
         for (var name in team2) {
             message = message + name + ", ";
         }
+        console.log(team1)
+        console.log(team2)
         curr_msg.channel.send(message, {tts: true}).catch(console.error);
       }
     });
