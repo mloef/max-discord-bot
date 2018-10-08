@@ -12,13 +12,17 @@ client.on("ready", () => {
         var team1 = []
         var team2 = []
         console.log
-        for (var user in guild.members.values()) {
-          console.log(user.displayName)
-          if (Math.random()*2 > 1) {
-            team2.append(user.displayName);
-          }
-          else {
-            team1.append(user.displayName);
+        for (var channel in guild.channels.values()) {
+          if (channel.type == "voice") {
+            for (var user in channel.members.values()) {
+              console.log(user.displayName)
+              if (Math.random()*2 > 1) {
+                team2.append(user.displayName);
+              }
+              else {
+                team1.append(user.displayName);
+              }
+            }
           }
         }
         while (Math.abs(team1.length - team2.length) > 1) {
